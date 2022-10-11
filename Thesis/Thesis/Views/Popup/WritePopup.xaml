@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage    xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                    x:Class="Thesis.WritePopup">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation DurationIn="400"
+                                   DurationOut="300"
+                                   EasingIn="SinOut"
+                                   EasingOut="SinIn"
+                                   HasBackgroundAnimation="True"
+                                   PositionIn="Center"
+                                   PositionOut="Center"
+                                   ScaleIn="1.2"
+                                   ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <!--  You can use any elements here which are extended from Xamarin.Forms.View  -->
+
+    <StackLayout VerticalOptions="Center"
+        HorizontalOptions="FillAndExpand"
+        Padding="20, 10, 20, 10">
+        <Frame BackgroundColor="#082335" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" VerticalOptions="Center">
+
+            <StackLayout>
+                <Label x:Name="TitleNode" FontSize="Medium" TextColor="#06C6B6" Margin="10,10,10,10" FontAttributes="Bold" />
+                <BoxView HeightRequest="2" Color="#00757C" HorizontalOptions="FillAndExpand" />
+                <Label Text="Value to change" TextColor="White" />
+
+                <StackLayout x:Name="FixType" IsVisible="False">
+                    <Entry x:Name="ValueChange" Placeholder="Write value here" FontSize="Large"
+                           TextColor="White" PlaceholderColor="#06C6BC" BackgroundColor="#082335" />
+                </StackLayout>
+
+                <StackLayout x:Name="BooleanType" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" IsVisible="False">
+                    <CheckBox x:Name="TrueCheck" IsChecked="False" CheckedChanged="TrueCheck_CheckedChanged" VerticalOptions="Center"/>
+                    <Label Text="True" TextColor="White" VerticalOptions="Center"/>
+                    <CheckBox x:Name="FalseCheck" IsChecked="False" CheckedChanged="FalseCheck_CheckedChanged" VerticalOptions="Center"/>
+                    <Label Text="False" TextColor="White" VerticalOptions="Center"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
+                    <Button Text="Cancel"  HorizontalOptions="FillAndExpand" BorderRadius="7" FontSize="Medium"
+                            BackgroundColor="#045E69"
+                            TextColor="White"
+                            Clicked="Button_Clicked_Cancel" />
+                    <Button Text="Change"  HorizontalOptions="FillAndExpand" BorderRadius="7" FontSize="Medium"
+                            BackgroundColor="#045E69"
+                            TextColor="White"
+                            Clicked="Button_Clicked_Change" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</pages:PopupPage>

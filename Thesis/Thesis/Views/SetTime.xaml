@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Thesis.Views.SetTime"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:chart="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+            android:TabbedPage.OffscreenPageLimit="2"
+             android:TabbedPage.IsSwipePagingEnabled="true"
+             android:TabbedPage.IsSmoothScrollEnabled="false"
+             Title="Set Time">
+    <ContentPage.Content>
+        <StackLayout Margin="10" 
+                     HorizontalOptions="CenterAndExpand" 
+                     VerticalOptions="CenterAndExpand">
+            <Label Text="Local Time" FontSize="26"
+                         />
+            <StackLayout Orientation="Horizontal" >
+
+                <Label Text="Day  " FontSize="25" 
+                       Margin="5"></Label>
+                <Entry x:Name="dayText"  PlaceholderColor="White" 
+                       HorizontalOptions="FillAndExpand"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Time" FontSize="25" 
+                       Margin="5"></Label>
+                <Entry x:Name="hourText" PlaceholderColor="White" 
+                       HorizontalOptions="FillAndExpand"></Entry>
+            </StackLayout>
+               
+           
+
+            
+            
+            
+            
+            
+            
+            <Button x:Name="syncBtn" Text="SYNCHRONIZE" Font="30" Clicked="syncBtn_Clicked"></Button>
+
+            <Label Text="System Time" FontSize="26"
+                 />
+            <StackLayout Orientation="Horizontal" >
+
+                <Label Text="Day  " FontSize="25" 
+                       Margin="5"></Label>
+                <Entry x:Name="day1Text"  PlaceholderColor="White" 
+                       HorizontalOptions="FillAndExpand"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Time" FontSize="25" 
+                       Margin="5"></Label>
+                <Entry x:Name="hour1Text" PlaceholderColor="White" 
+                       HorizontalOptions="FillAndExpand"></Entry>
+            </StackLayout>
+        </StackLayout>
+        
+        
+    </ContentPage.Content>
+</ContentPage>

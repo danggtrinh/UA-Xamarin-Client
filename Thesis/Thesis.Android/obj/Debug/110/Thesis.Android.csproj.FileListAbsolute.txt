@@ -1,0 +1,4 @@
+D:\Desktop\ThesisOpcuaClient2020-master\Thesis\Thesis.Android\obj\Debug\110\MonoAndroid,Version=v11.0.AssemblyAttributes.cs
+D:\Desktop\ThesisOpcuaClient2020-master\Thesis\Thesis.Android\obj\Debug\110\build.props
+D:\Desktop\ThesisOpcuaClient2020-master\Thesis\Thesis.Android\obj\Debug\110\adb.props
+D:\Desktop\ThesisOpcuaClient2020-master\Thesis\Thesis.Android\obj\Debug\110\Thesis.Android.csproj.AssemblyReference.cache

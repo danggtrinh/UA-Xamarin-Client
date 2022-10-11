@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+           x:Class="Thesis.MonitorPage"
+             BackgroundColor="#082535">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="About" Order="Default" Priority="0" Clicked="ToolbarItem_Clicked_About" />
+        <ToolbarItem Text="Help" Order="Default" Priority="1" Clicked="ToolbarItem_Clicked_Help" />
+    </ContentPage.ToolbarItems>
+    <!--Pages can be added as references or inline-->
+    <ContentPage.Content Title="DataView" IconImageSource="data.png" >
+
+        <StackLayout Margin="10">
+            <ListView     x:Name="LVMonitors"
+                          ItemsSource="{Binding Monitors}"
+                          HasUnevenRows="True"
+                          android:ListView.IsFastScrollEnabled="true"
+                          SeparatorColor="#06C6BC" BackgroundColor="#082535">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0" Orientation="Vertical">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding MonitorName,StringFormat='Node: {0}'}"
+                                               TextColor="#06C6BC" />
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding MonitorValue,StringFormat='Value: {0}'}"
+                                               TextColor="#06C6BC" />
+                                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding MonitorSourceT,StringFormat='SourceTime: {0}'}"
+                                               TextColor="#06C6BC" />
+                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding MonitorServerT,StringFormat='ServerTime: {0}'}"
+                                               TextColor="#06C6BC" />
+                                    </Grid>
+                                </StackLayout>
+                                <Image Source="delete.png" Grid.Column="1"
+                                           Margin="5,0,0,0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Remove"
+                                                                  CommandParameter="{Binding MonitorID}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

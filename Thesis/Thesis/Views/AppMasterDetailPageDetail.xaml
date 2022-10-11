@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Thesis.AppMasterDetailPageDetail"
+             Title="Detail"
+             BackgroundColor="WhiteSmoke">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="About" Order="Default" Priority="0" Clicked="ToolbarItem_Clicked_About" />
+        <!-- <ToolbarItem Text="Help" Order="Default" Priority="1" Clicked="ToolbarItem_Clicked_Help" />--> 
+    </ContentPage.ToolbarItems>
+  <StackLayout Padding="10">
+        <Label Text="Server Name" TextColor="SteelBlue" FontAttributes="Bold" FontSize="Large" />
+        <BoxView HeightRequest="2" Color="SkyBlue" />
+        <Label x:Name="servername" FontSize="Medium" TextColor="SteelBlue" />
+
+        <Label Text="Server Uri" TextColor="SteelBlue" FontAttributes="Bold" FontSize="Large" />
+        <BoxView HeightRequest="2" Color="SkyBlue" />
+        <Label x:Name="serveruri" FontSize="Medium" TextColor="SteelBlue" />
+
+        <Label Text="Security" TextColor="SteelBlue" FontAttributes="Bold" FontSize="Large" />
+        <BoxView HeightRequest="2" Color="SkyBlue" />
+        <Label Text="..." FontSize="Medium" TextColor="SteelBlue" />
+
+        <Label Text="Connection Status" TextColor="SteelBlue" FontAttributes="Bold" FontSize="Large" />
+        <BoxView HeightRequest="2" Color="SkyBlue" />
+        <Label x:Name="connectionstatus" FontSize="Medium" TextColor="SteelBlue" />
+
+        <Label Text="Connected Sinced" TextColor="SteelBlue" FontAttributes="Bold" FontSize="Large" />
+        <BoxView HeightRequest="2" Color="SkyBlue" />
+        <Label x:Name="connectedsince" FontSize="Medium" TextColor="SteelBlue" />
+    </StackLayout>
+</ContentPage>

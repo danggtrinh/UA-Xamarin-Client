@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net46;netstandard2.0</TargetFrameworks>
+    <AssemblyName>Opc.Ua.Client</AssemblyName>
+    <LangVersion>6</LangVersion>
+    <PackageId>Opc.Ua.Client</PackageId>
+    <RootNamespace>Opc.Ua.Client</RootNamespace>
+    <Description>OPC UA Client Class Library</Description>
+    <Configurations>Debug;Release;Gorilla</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Opc.Ua.Core\Opc.Ua.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.ServiceModel" />
+  </ItemGroup>
+
+  <Target Name="GetPackagingOutputs" />
+
+</Project>

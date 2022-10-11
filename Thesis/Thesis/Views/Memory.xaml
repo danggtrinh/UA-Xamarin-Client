@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Thesis.Views.Memory"
+             Title="Memory">
+    <ContentPage.Content>
+        <StackLayout Margin="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Memory In Use" FontSize="25"  ></Label>
+                <Entry x:Name="memoryUse" HorizontalOptions="FillAndExpand"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Memory Size" FontSize="25"></Label>
+                <Entry x:Name="memorySize" HorizontalOptions="FillAndExpand"></Entry>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

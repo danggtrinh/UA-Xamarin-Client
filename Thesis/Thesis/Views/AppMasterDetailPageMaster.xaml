@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:custom="clr-namespace:Thesis"
+             x:Class="Thesis.AppMasterDetailPageMaster"
+             BackgroundColor="WhiteSmoke"
+             Title="Master">
+    <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="DodgerBlue" HeightRequest="120" Orientation="Horizontal" Padding="5">
+                <Frame HeightRequest="30" WidthRequest="30" CornerRadius="30" VerticalOptions="Center"
+                           BackgroundColor="WhiteSmoke" Margin="10">
+                    <Image Source="LogoAuto.png" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                </Frame>
+                <StackLayout VerticalOptions="Center" Spacing="2">
+                    <Label Text="Welcome to my App" FontAttributes="Bold" FontSize="Large"
+                           Margin="10,0,0,0" VerticalOptions="Center" TextColor="SteelBlue" />
+              
+                </StackLayout>
+            </StackLayout>
+            <Grid Grid.Row="1" Grid.Column="0">
+            <ListView x:Name="MenuItemsListView" SeparatorVisibility="Default" HasUnevenRows="true"
+                       ItemsSource="{Binding MenuItems}"
+                      SeparatorColor="#00757C"
+                      Margin="5,8,5,5"
+                    Footer=""
+                       BackgroundColor="WhiteSmoke">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <custom:CustomViewCell SelectedItemBackgroundColor="LightCyan" Height="45">
+                            <Grid VerticalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding Icon}"  HeightRequest="25" WidthRequest="25" Grid.Row="0"
+                                           Grid.Column="0" VerticalOptions="Center" Margin="10,0,0,0" />
+                                <Label Text="{Binding Title}" Margin="20,0,0,0"
+                                       TextColor="SteelBlue"
+                                       LineBreakMode="TailTruncation" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" FontAttributes="Bold" />
+                            </Grid>
+                        </custom:CustomViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout VerticalOptions="EndAndExpand" Margin="5,0,5,5">
+                <BoxView HeightRequest="3" Color="SkyBlue" />
+                <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Margin="5,0,0,5">
+                    <Image Source="logout.png" HeightRequest="25" WidthRequest="25" Margin="10,0,0,0" />
+                    <Button Text="Disconnect" VerticalOptions="Center"
+                        TextColor="SteelBlue"
+                        FontAttributes="Bold" Margin="10,0,0,0" BackgroundColor="Transparent" Clicked="Disconnect_Clicked" />
+                </StackLayout>
+            </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage>

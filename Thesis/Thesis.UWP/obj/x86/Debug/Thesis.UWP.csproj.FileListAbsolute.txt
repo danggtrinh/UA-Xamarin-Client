@@ -1,0 +1,11 @@
+C:\Thesis\Thesis\Thesis.UWP\obj\x86\Debug\Thesis.UWP.csprojAssemblyReference.cache
+C:\Thesis\Thesis\Thesis.UWP\obj\x86\Debug\App.g.i.cs
+C:\Thesis\Thesis\Thesis.UWP\obj\x86\Debug\App.g.cs
+C:\Thesis\Thesis\Thesis.UWP\obj\x86\Debug\MainPage.g.i.cs
+C:\Thesis\Thesis\Thesis.UWP\obj\x86\Debug\MainPage.g.cs
+C:\Thesis\Thesis\Thesis.UWP\obj\x86\Debug\XamlTypeInfo.g.cs
+C:\Thesis\Thesis\Thesis.UWP\obj\x86\Debug\App.xaml
+C:\Thesis\Thesis\Thesis.UWP\obj\x86\Debug\MainPage.xaml
+C:\Thesis\Thesis\Thesis.UWP\obj\x86\Debug\App.xbf
+C:\Thesis\Thesis\Thesis.UWP\obj\x86\Debug\MainPage.xbf
+C:\Thesis\Thesis\Thesis.UWP\obj\x86\Debug\XamlSaveStateFile.xml

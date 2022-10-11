@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:form="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+            x:Class="Thesis.TreeView"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+              android:TabbedPage.OffscreenPageLimit="2"
+             android:TabbedPage.IsSwipePagingEnabled="True"
+            android:TabbedPage.IsSmoothScrollEnabled="False"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarBackgroundColor="#00757C"
+            BarTextColor="WhiteSmoke"
+             BackgroundColor="#082535"
+             Title="Browse">
+    <ContentPage Title="DataView" IconImageSource="data.png" BackgroundColor="#082535">
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Text="About" Order="Default" Priority="0" Clicked="ToolbarItem_Clicked_About" />
+            <!-- <ToolbarItem Text="Help" Order="Default" Priority="1" Clicked="ToolbarItem_Clicked_Help" />--> 
+        </ContentPage.ToolbarItems>
+        <StackLayout>
+            <ListView x:Name="treeView"
+              SelectedItem="Mode=Twoway"
+              ItemSelected="OnSelection"
+              HasUnevenRows="True"
+              BackgroundColor="WhiteSmoke"
+              SeparatorColor="SkyBlue"
+               Margin="5,0,5,0">
+                <ListView.SeparatorVisibility>
+                    <OnPlatform x:TypeArguments="SeparatorVisibility">
+                        <On Platform="iOS">None</On>
+                    </OnPlatform>
+                </ListView.SeparatorVisibility>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell BindingContextChanged="OnBindingContextChanged">
+                            <StackLayout Orientation = "Horizontal" Margin = "10,10,10,10">
+                                <Image Source = "{Binding ImageUrl}">
+                                    <Image.Aspect>
+                                        <OnPlatform x:TypeArguments="Aspect">
+                                            <On Platform="Android, iOS">AspectFit</On>
+                                            <On Platform="UWP">Fill</On>
+                                        </OnPlatform>
+                                    </Image.Aspect>
+                                    <Image.HeightRequest>
+                                        <OnPlatform x:TypeArguments="x:Double">
+                                            <On Platform="iOS">30</On>
+                                            <On Platform="Android">20</On>
+                                            <On Platform="UWP">16</On>
+                                        </OnPlatform>
+                                    </Image.HeightRequest>
+                                </Image>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="9*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text = "{Binding NodeName}" Grid.Column="0" TextColor="SteelBlue" />
+
+                                    <!--<Image x:Name="Icon" Source="warning.png" Grid.Column=" 1">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer />
+                                        </Image.GestureRecognizers>
+                                    </Image>-->
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="Graph" IconImageSource="statistics.png" BackgroundColor="#082535">
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Text="Help" Order="Secondary" Priority="1" Clicked="ToolbarItem_Clicked_Help" />
+            <ToolbarItem Text="About" Order="Secondary" Priority="0" Clicked="ToolbarItem_Clicked_About" />
+        </ContentPage.ToolbarItems>
+        <StackLayout>
+            <Frame BorderColor="#5e98af" BackgroundColor="#082535"
+                           CornerRadius="5"  HasShadow="False"
+                           VerticalOptions="Center"
+                           Margin="7,5,7,5"
+                           WidthRequest="150"
+                           HeightRequest="80">
+                <StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" x:Name="GraphNodeID"  TextColor="White" FontAttributes="Bold" FontSize="Small" />
+                        <Label Grid.Row="0" Grid.Column="1" x:Name="GraphDate"  TextColor="White" FontAttributes="Bold" FontSize="Small" />
+
+                        <Label Grid.Row="1" Grid.Column="0" x:Name="GraphValue" TextColor="White" FontAttributes="Bold" FontSize="Small" />
+                        <Label Grid.Row="1" Grid.Column="1" x:Name="GraphTime" TextColor="White" FontAttributes="Bold" FontSize="Small" />
+                    </Grid>
+                </StackLayout>
+            </Frame>
+            <Frame BorderColor="#5e98af" BackgroundColor="#082535"
+                           CornerRadius="5"  HasShadow="False"
+                           VerticalOptions="Center"
+                           Margin="7,5,7,5"
+                           WidthRequest="150"
+                           HeightRequest="80">
+                <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <form:ChartView Margin="7,0,7,5" x:Name="Chart_Read" 
+                            HeightRequest="400" WidthRequest="0" HorizontalOptions="StartAndExpand"  />
+                </ScrollView>
+            </Frame>
+            
+         
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>

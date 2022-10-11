@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Thesis.MyScada"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:chart="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+            android:TabbedPage.OffscreenPageLimit="2"
+             android:TabbedPage.IsSwipePagingEnabled="true"
+             android:TabbedPage.IsSmoothScrollEnabled="false"
+             BarBackgroundColor="#00757C"
+             BackgroundColor="#082535"
+            Title="MyScada">
+
+    <ContentPage IconImageSource="home.png" BackgroundColor="#082535">
+        <ContentPage.Content>
+            <StackLayout Padding="10">
+                <Label Text="Control and monitor pump" HorizontalTextAlignment="Center" TextColor="White" FontAttributes="Bold" FontSize="15" />
+                <Label Text="Home" HorizontalTextAlignment="Center" TextColor="White" />
+                <BoxView HeightRequest="2" Color="DarkGray" WidthRequest="350" HorizontalOptions="Center" />
+                <StackLayout Orientation="Horizontal" Margin="10,10,10,0">
+                    <Label Text="MODE :" FontSize="20" Margin="10,0,0,0" TextColor="White" FontAttributes="Bold" HorizontalOptions="Start"  VerticalOptions="Center" />
+                    <Switch x:Name="Mode"  Margin="10,0,10,0" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Frame BorderColor="#5e98af" BackgroundColor="#082535"
+                           CornerRadius="5"  HasShadow="False"
+                           HorizontalOptions="End"
+                           VerticalOptions="Center"
+                           Margin="10,0,0,0"
+                           WidthRequest="150">
+                        <Label x:Name="MaAu" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontSize="Large" FontAttributes="Bold" />
+                    </Frame>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Margin="0,10,0,0" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ImageButton Source="stopsign.png" Clicked="Emer_Clicked" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" BackgroundColor="Transparent" />
+                    <ImageButton Source="refresh.png" Clicked="Reset_Clicked" WidthRequest="30" HeightRequest="30"  Margin="10,0,0,0" BackgroundColor="Transparent" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="Set DateTime :" TextColor="White" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+                    <Entry x:Name="DT" TextColor="Gray" WidthRequest="100" VerticalOptions="Center" />
+                    <Button Text="Change" Clicked="Change_Date_Clicked" />
+                </StackLayout>
+                <Frame     BorderColor="#5e98af" BackgroundColor="#082535"
+                           CornerRadius="5" Padding="10,10,10,10" HasShadow="False"
+                           Margin="10,10,10,20"
+                           WidthRequest="150"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand">
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="Statusled" WidthRequest="20" HeightRequest="20" />
+                            <Label Text="Status" TextColor="White" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image x:Name="Faultled"  WidthRequest="20" HeightRequest="20" />
+                            <Label Text="Fault" TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <ContentPage  IconImageSource="motorTab.png" Padding="10,10,10,10" BackgroundColor="#082535">
+        <StackLayout>
+            <Frame     BorderColor="#5e98af" BackgroundColor="#082535"
+                           CornerRadius="5" Padding="10,10,10,10" HasShadow="False"
+                           Margin="10,10,10,0"
+                           WidthRequest="150"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label Text="Pump 1" TextColor="LightBlue" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" />
+
+                    <Image x:Name="Pump1" HorizontalOptions="Center" HeightRequest="110" WidthRequest="110" />
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0" HorizontalOptions="Center">
+                        <Button Text="Start" Clicked="Start_Pump1_Clicked" />
+                        <Button Text="Stop" Clicked="Stop_Pump1_Clicked" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <Frame     BorderColor="#5e98af" BackgroundColor="#082535"
+                           CornerRadius="5" Padding="10,10,10,10" HasShadow="False"
+                           Margin="10,20,10,0"
+                           WidthRequest="150"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label Text="Pump 2" TextColor="LightBlue" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Image x:Name="Pump2" HorizontalOptions="Center" HeightRequest="110" WidthRequest="110" />
+                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0"  HorizontalOptions="Center">
+                        <Button Text="Start" Clicked="Start_Pump2_Clicked" />
+                        <Button Text="Stop" Clicked="Stop_Pump2_Clicked" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage IconImageSource="watertankTab.png" BackgroundColor="#082535">
+        <StackLayout Margin="5,5,5,5">
+            <Frame     BorderColor="#5e98af" BackgroundColor="#082535"
+                       CornerRadius="5" Padding="0,0,0,0" HasShadow="False"
+                       Margin="0,3,0,3"
+                       WidthRequest="150"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout>
+                                <Label Text="Tank 1" TextColor="LightBlue" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" />
+                                <Image Source="watertank.png" Margin="20,0,0,0" HeightRequest="100" WidthRequest="80" HorizontalOptions="Center" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="End" Margin="0,0,0,0">
+                                <StackLayout Orientation="Horizontal" Margin="0,0,0,0" Spacing="0">
+                                    <Label Text="UpLimit :" FontSize="Small" VerticalOptions="Center" TextColor="White" />
+                                    <Entry x:Name="up1" VerticalOptions="Center" WidthRequest="80" TextColor="White" />
+                                    <Label Text="Level:" Margin="10,0,0,0" FontSize="Small" VerticalOptions="Center" TextColor="White" />
+                                    <Entry x:Name="level1" VerticalOptions="Center" WidthRequest="80" IsReadOnly="True" TextColor="White" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Spacing="0">
+                                    <Label Text="LowLimit :"  FontSize="Small" VerticalOptions="Center" TextColor="White" />
+                                    <Entry x:Name="low1" VerticalOptions="Center"  WidthRequest="80" TextColor="White" />
+
+                                    <Label Text="Status:" Margin="5,0,0,0" FontSize="Small" VerticalOptions="Center" TextColor="White" />
+                                    <Entry x:Name="status1" VerticalOptions="Center" WidthRequest="80" IsReadOnly="True" TextColor="White" />
+                                </StackLayout>
+                                <Button Text="Change"  Clicked="Change_Tank1_Clicked" />
+                            </StackLayout>
+                        </StackLayout>
+                        <BoxView HeightRequest="1" BackgroundColor="Gray" />
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="water.png" Margin="20,0,0,0" HeightRequest="50" WidthRequest="50" />
+                            <StackLayout Margin="50,0,0,0">
+                                <Button Text="Start" Clicked="Start_Valve1_Clicked" WidthRequest="80" HeightRequest="40" />
+                                <Button Text="Stop" Clicked="Stop_Valve1_Clicked" WidthRequest="80" HeightRequest="40" />
+                            </StackLayout>
+                            <Image x:Name="statusvalve1" Margin="30,0,0,0" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <Frame     BorderColor="#5e98af" BackgroundColor="#082535"
+                       CornerRadius="5" Padding="0,0,0,0" HasShadow="False"
+                       Margin="0,3,0,3"
+                       WidthRequest="150"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout>
+                                <Label Text="Tank 2" TextColor="LightBlue" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" />
+                                <Image Source="watertank.png" Margin="20,0,0,0" HeightRequest="100" WidthRequest="80" HorizontalOptions="Center" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="End" Margin="0,0,0,0">
+                                <StackLayout Orientation="Horizontal" Margin="0,0,0,0" Spacing="0">
+                                    <Label Text="UpLimit :" FontSize="Small" VerticalOptions="Center" TextColor="White" />
+                                    <Entry x:Name="up2" VerticalOptions="Center" WidthRequest="80" TextColor="White" />
+                                    <Label Text="Level:" Margin="10,0,0,0" FontSize="Small" VerticalOptions="Center" TextColor="White" />
+                                    <Entry x:Name="level2" VerticalOptions="Center" WidthRequest="80" IsReadOnly="True" TextColor="White" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0" Spacing="0">
+                                    <Label Text="LowLimit :"  FontSize="Small" VerticalOptions="Center" TextColor="White" />
+                                    <Entry x:Name="low2" VerticalOptions="Center"  WidthRequest="80" TextColor="White" />
+                                    <Label Text="Status:" Margin="5,0,0,0" FontSize="Small" VerticalOptions="Center" TextColor="White" />
+                                    <Entry x:Name="status2" VerticalOptions="Center" WidthRequest="80" IsReadOnly="True" TextColor="White" />
+                                </StackLayout>
+                                <Button Text="Change" Clicked="Change_Tank2_Clicked" />
+                            </StackLayout>
+                        </StackLayout>
+                        <BoxView HeightRequest="1" BackgroundColor="Gray" />
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="water.png" Margin="20,0,0,0" HeightRequest="50" WidthRequest="50" />
+                            <StackLayout Margin="50,0,0,0">
+                                <Button Text="Start" Clicked="Start_Valve2_Clicked" WidthRequest="80" HeightRequest="40" />
+                                <Button Text="Stop" Clicked="Stop_Valve2_Clicked" WidthRequest="80" HeightRequest="40" />
+                            </StackLayout>
+                            <Image x:Name="statusvalve2" Margin="30,0,0,0" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage  IconImageSource="gateTab.png" BackgroundColor="#082535">
+        <StackLayout Padding="10,10,10,10">
+            <Frame     BorderColor="#5e98af" BackgroundColor="#082535"
+                       CornerRadius="5" Padding="0,0,0,0" HasShadow="False"
+                       Margin="0,5,0,5"
+                       WidthRequest="150"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label Text="Gate 1" TextColor="White" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Image Source="Gate.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" />
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button Text="Open"  Clicked="Open_Gate1_Clicked" />
+                        <Button Text="Close" Clicked="Close_Gate1_Clicked" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label Text="Status :" TextColor="White" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" />
+                        <Entry x:Name="statusgate1" TextColor="White" FontSize="Large"  FontAttributes="Bold" IsReadOnly="True" VerticalOptions="Center" WidthRequest="100" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <Frame     BorderColor="#5e98af" BackgroundColor="#082535"
+                       CornerRadius="5" Padding="0,0,0,0" HasShadow="False"
+                       Margin="0,5,0,5"
+                       WidthRequest="150"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label Text="Gate 2" TextColor="White" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Image Source="Gate.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" />
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button Text="Open" Clicked="Open_Gate2_Clicked" />
+                        <Button Text="Close" Clicked="Close_Gate2_Clicked" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label Text="Status :" TextColor="White" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" />
+                        <Entry x:Name="statusgate2" TextColor="White" FontSize="Large"  FontAttributes="Bold" IsReadOnly="True" VerticalOptions="Center" WidthRequest="100" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage  IconImageSource="statistics.png" BackgroundColor="#082535"  Padding="5,5,5,5">
+        <StackLayout>
+            <Frame     BorderColor="#5e98af" BackgroundColor="#082535"
+                       CornerRadius="5" Padding="0,0,0,0" HasShadow="False"
+                       Margin="0,5,0,5"
+                       WidthRequest="150"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal" Padding="3,3,3,3">
+                    <StackLayout HorizontalOptions="Start" VerticalOptions="Center" Margin="5,0,0,0">
+                        <Label x:Name="Up1" TextColor="white"/>
+                        <Label x:Name="Le1" TextColor="white"/>
+                        <Label x:Name="Do1" TextColor="white"/>
+                    </StackLayout>
+                    <chart:ChartView Chart="{Binding Chart1}" HeightRequest="200" WidthRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </Frame>
+            <Frame     BorderColor="#5e98af" BackgroundColor="#082535"
+                       CornerRadius="5" Padding="0,0,0,0" HasShadow="False"
+                       Margin="0,5,0,5"
+                       WidthRequest="150"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal" Padding="3,3,3,3">
+                    <StackLayout HorizontalOptions="Start" VerticalOptions="Center" Margin="5,0,0,0">
+                        <Label x:Name="Up2" TextColor="white"/>
+                        <Label x:Name="Le2" TextColor="white"/>
+                        <Label x:Name="Do2" TextColor="white"/>
+                    </StackLayout>
+                    <chart:ChartView  Chart="{Binding Chart2}" HeightRequest="200" WidthRequest="200" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>

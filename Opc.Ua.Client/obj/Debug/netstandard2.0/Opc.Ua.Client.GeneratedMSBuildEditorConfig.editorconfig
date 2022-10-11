@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = Opc.Ua.Client
+build_property.ProjectDir = D:\LV\ThesisOpcuaClient\Opc.Ua.Client\

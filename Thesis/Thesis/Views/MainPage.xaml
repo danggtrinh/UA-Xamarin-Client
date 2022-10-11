@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>  
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Thesis"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             x:Class="Thesis.MainPage"
+             Title="OPC UA Client"
+            BackgroundColor="WhiteSmoke"
+            >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="About" Order="Default" Priority="0" Clicked="ToolbarItem_Clicked_About" />
+        <!--#region<ToolbarItem Text="Help" Order="Default" Priority="1" Clicked="ToolbarItem_Clicked_Help" /> --> 
+    </ContentPage.ToolbarItems>
+
+    
+    <ContentPage.Content>
+        <StackLayout  Margin = "10,10,10,10">
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+
+                <StackLayout Orientation="Horizontal">
+                    <Button  x:Name="AddNewConnection"
+                    Text="Add New Connection"
+                    Font="Large"
+                    Margin="0,0,0,0"
+                    HorizontalOptions="FillAndExpand"
+                    BorderRadius="6"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="SkyBlue"
+                    Clicked="AddNewConnection_Clicked" />
+                </StackLayout>
+
+                <Label Text="CONNECTION LIST" HorizontalTextAlignment="Start" FontAttributes="Bold"
+                       TextColor="SteelBlue" FontSize="Medium">
+                </Label>
+                <BoxView HeightRequest="3" Color="SkyBlue" />
+
+                <ListView x:Name="listView"
+                         ItemsSource="{Binding Connections}"
+                          HasUnevenRows="True"
+                          android:ListView.IsFastScrollEnabled="true"
+                          SeparatorColor="SteelBlue" 
+                          Footer=""
+                          BackgroundColor="WhiteSmoke">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5*" />
+                                        <ColumnDefinition Width="35" />
+                                        <ColumnDefinition Width="40" />
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <StackLayout Grid.Column="0" Orientation="Vertical">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnConnect" CommandParameter="{Binding ConnectionId}" />
+                                        </StackLayout.GestureRecognizers>
+                                        <Label x:Name="NameA" Text="{Binding ConnectionName}"
+                                           FontSize="Medium"
+                                           FontAttributes="Bold"
+                                               TextColor="SteelBlue" />
+                                        <Label  Text="{Binding ConnectionUrl,StringFormat='Uri: {0}'}"
+                                               TextColor="SteelBlue" />
+                                    </StackLayout>
+
+
+
+                                    <Image Source="edit_icon2.png" Grid.Column=" 1">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Edit"
+                                                                  CommandParameter="{Binding ConnectionId}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    
+                                    <Image Source="delete_icon2.png" Grid.Column="2"
+                                           Margin="5,0,0,0">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Remove"
+                                                                  CommandParameter="{Binding ConnectionId}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Label x:Name="label"
+                   Text="{Binding LabelText, Mode=TwoWay}"
+                   FontSize="Medium"
+                   FontAttributes="None"
+                   Margin="0,50,0,0"
+                       TextColor="White">
+                </Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" VerticalOptions="End" Margin="0,0,0,10">
+                <BoxView HeightRequest="3" Color="SkyBlue" />
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="Logobk_trans.png"
+                           VerticalOptions="FillAndExpand"
+                           WidthRequest="40"
+                           HeightRequest="40"
+                           Opacity="0.9"
+                           Margin="20,0,10,0"
+                           Aspect="AspectFit" />
+                    <Label>
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span  TextColor="ForestGreen"/>
+                                <Span Text="{x:Static x:Environment.NewLine}" />
+                               
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
